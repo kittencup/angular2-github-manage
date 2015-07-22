@@ -1,33 +1,35 @@
 import {Component,View} from 'angular2/annotations';
 import {EventEmitter} from 'angular2/core';
-import {UserService} from '../services/user.service';
+import {GithubService} from '../services/github.service';
 
 @Component({
     selector: 'github-form',
-    events: ['load']
+    events: ['load'],
+    properties:['isLoading:is-loading'],
 })
 @View({
     templateUrl: './components/githubForm.html?v=<%= VERSION %>'
 })
 export class GithubForm {
 
-    userService:UserService;
+    githubService:GithubService;
     load:EventEmitter;
+    isLoading:boolean;
 
-    constructor(userService:UserService) {
+    constructor(githubService:GithubService) {
         this.load = new EventEmitter();
-        this.userService = userService;
+        this.githubService = githubService;
     }
 
     onInputUsername(value:string) {
-        this.userService.setUsername(value);
+        this.githubService.setUsername(value);
     }
 
     onInputPassword(value:string) {
-        this.userService.setPassword(value);
+        this.githubService.setPassword(value);
     }
 
     onLoad() {
-        this.load.next(this.userService);
+        this.load.next(this.githubService);
     }
 }

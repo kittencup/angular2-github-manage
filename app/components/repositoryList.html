@@ -1,5 +1,5 @@
-<div>
-    <github-form (load)="onLoad($event)"></github-form>
+<div class="container">
+    <github-form (load)="onLoad($event)" [is-loading]="isLoading"></github-form>
 
     <github-error *ng-if="message" [message]="message"></github-error>
 
@@ -7,4 +7,5 @@
 
     <repository-grid (delete)="onDelete($event)" *ng-if="repositories.length || filterValue" [repositories]="repositories"></repository-grid>
 
+    <loading *ng-if="isLoading"></loading>
 </div>

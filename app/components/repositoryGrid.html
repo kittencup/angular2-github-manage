@@ -1,52 +1,53 @@
 <div class="row repository-grid">
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            id
-        </th>
-        <th>
-            language
-        </th>
-        <th>
-            owner
-        </th>
-        <th>
-            name
-        </th>
-        <th>
-            private
-        </th>
-        <th>
-            fork
-        </th>
-        <th>
-            created at
-        </th>
-        <th>
 
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ng-for="#repository of repositories">
-        <td>{{repository.id}}</td>
-        <td>{{repository.language}}</td>
-        <td>{{repository.owner.login}}</td>
-        <td><a target="_blank" href="{{repository.html_url}}">{{repository.name}}</a></td>
-        <td>
-            <i *ng-if="repository.private" class="glyphicon glyphicon-ok"></i>
-            <i *ng-if="!repository.private" class="glyphicon glyphicon-remove"></i>
-        </td>
-        <td>
-            <i *ng-if="repository.fork" class="glyphicon glyphicon-ok"></i>
-            <i *ng-if="!repository.fork" class="glyphicon glyphicon-remove"></i>
-        </td>
-        <td>{{repository.created_at}}</td>
-        <td>
-            <button (click)="onDelete(repository)">Delete</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                language
+            </th>
+            <th>
+                owner
+            </th>
+            <th>
+                name
+            </th>
+            <th>
+                private
+            </th>
+            <th>
+                fork
+            </th>
+            <th>
+                created at
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ng-for="#repository of repositories">
+            <td>{{repository.id}}</td>
+            <td>{{repository.language}}</td>
+            <td>{{repository.owner.login}}</td>
+            <td><a target="_blank" href="{{repository.html_url}}">{{repository.name}}</a></td>
+            <td>
+                <i *ng-if="repository.private" class="glyphicon glyphicon-ok"></i>
+                <i *ng-if="!repository.private" class="glyphicon glyphicon-remove"></i>
+            </td>
+            <td>
+                <i *ng-if="repository.fork" class="glyphicon glyphicon-ok"></i>
+                <i *ng-if="!repository.fork" class="glyphicon glyphicon-remove"></i>
+            </td>
+            <td>{{repository.created_at}}</td>
+            <td>
+                <button class="btn btn-danger" [disabled]="!repository.permissions.admin" (click)="onDelete(repository)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>

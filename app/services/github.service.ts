@@ -2,7 +2,7 @@ import {HttpService} from './http.service';
 import {Http,Headers} from 'angular2/http';
 import {Inject} from 'angular2/di';
 
-export class UserService extends HttpService {
+export class GithubService extends HttpService {
 
     private username:string;
     private password:string;
@@ -12,7 +12,7 @@ export class UserService extends HttpService {
         this.configGithubHeaders();
     }
 
-    configGithubHeaders():UserService {
+    configGithubHeaders():GithubService {
         var headers = new Headers();
         headers.set('Accept', 'application/vnd.github.v3+json');
         headers.set('Content-Type', 'application/json;charset=UTF-8');
@@ -29,13 +29,13 @@ export class UserService extends HttpService {
         this.requestOptions.headers.set('Authorization', 'Basic ' + btoa(this.username + ':' + this.password));
     }
 
-    setUsername(username:string):UserService {
+    setUsername(username:string):GithubService {
         this.username = username;
         this.setAuthorization();
         return this;
     }
 
-    setPassword(password:string):UserService {
+    setPassword(password:string):GithubService {
         this.password = password;
         this.setAuthorization();
         return this;

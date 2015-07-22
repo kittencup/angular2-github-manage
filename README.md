@@ -1,6 +1,6 @@
 # Introduction
 
-Github Manage for Angular 2 apps.
+Github Manage for Angular 2 apps.In order to facilitate to delete repositories
 
 **Note:** Angular 2.0 is not production ready yet!
 
