@@ -5,7 +5,8 @@
 
     <repository-filter (filter)="onFilter($event)" *ng-if="repositories.length || filterValue"></repository-filter>
 
-    <repository-grid (delete)="onDelete($event)" *ng-if="repositories.length || filterValue" [repositories]="repositories"></repository-grid>
-
     <loading *ng-if="isLoading"></loading>
+
+    <repository-grid (delete)="onDelete($event)" *ng-if="repositories.length || filterValue" [repositories]="repositories" [is-loading]="isLoading"></repository-grid>
+
 </div>

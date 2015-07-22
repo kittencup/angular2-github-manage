@@ -4,7 +4,7 @@ import {EventEmitter} from 'angular2/core';
 
 @Component({
     selector: 'repository-grid',
-    properties:['repositories'],
+    properties:['repositories','isLoading:is-loading'],
     events:['delete']
 })
 @View({
@@ -14,6 +14,7 @@ import {EventEmitter} from 'angular2/core';
 export class RepositoryGrid {
 
     delete:EventEmitter;
+    isLoading:boolean;
 
     constructor(){
         this.delete = new EventEmitter();

@@ -30,12 +30,23 @@ export class RepositoryList {
         this.githubService = githubService;
     }
 
+    showLoading(){
+        this.isLoading = true;
+    }
+
+    hideLoading(){
+        this.isLoading = false;
+    }
+
     onFilter(value:string):void {
         this.filterValue = value;
     }
 
     onDelete(repository:any):void {
         if (confirm('Delete `' + repository.name + '` Repository?')) {
+
+          this.showLoading();
+
           this.githubService
               .deleteRepository(repository)
               .subscribe(res => {
@@ -50,14 +61,17 @@ export class RepositoryList {
                   }else{
                       this.message = res.message;
                   }
+
+                  this.hideLoading();
             });
+
         }
     }
 
-    onLoad(useService:GithubService) {
+    onLoad() {
         this.origRepositories = [];
         this.message = null;
-        this.isLoading = true;
+        this.showLoading();
         this.getOrigRepositories();
     }
 
@@ -74,7 +88,7 @@ export class RepositoryList {
                this.message = repositories.message;
             }
 
-            this.isLoading = false;
+            this.hideLoading();
         });
     }
 

@@ -45,7 +45,7 @@
             </td>
             <td>{{repository.created_at}}</td>
             <td>
-                <button class="btn btn-danger" [disabled]="!repository.permissions.admin" (click)="onDelete(repository)">Delete</button>
+                <button class="btn btn-danger" [disabled]="isLoading || !repository.permissions.admin" (click)="onDelete(repository)">Delete</button>
             </td>
         </tr>
         </tbody>

@@ -1,5 +1,6 @@
 .repository-filter{
-    margin:20px 0;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 
 .repository-grid{
@@ -7,11 +8,13 @@
 }
 
 .github-error{
-    margin:20px 0;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 
 .github-form{
-    margin:20px 0;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 
 .glyphicon-refresh-animate {
