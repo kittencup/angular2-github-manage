@@ -1,6 +1,6 @@
 # Introduction
 
-Github Manager for Angular 2 apps.
+Github Manage for Angular 2 apps.
 
 
 **Note:** Angular 2.0 is not production ready yet!
