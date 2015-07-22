@@ -16,7 +16,7 @@ import {loading} from './loading';
 })
 @View({
     templateUrl: './components/repositoryList.html?v=<%= VERSION %>',
-    directives: [loading,RepositoryFilter, RepositoryGrid, GithubForm,GithubError,NgIf]
+    directives: [loading, RepositoryFilter, RepositoryGrid, GithubForm, GithubError, NgIf]
 })
 export class RepositoryList {
 
@@ -30,11 +30,11 @@ export class RepositoryList {
         this.githubService = githubService;
     }
 
-    showLoading(){
+    showLoading() {
         this.isLoading = true;
     }
 
-    hideLoading(){
+    hideLoading() {
         this.isLoading = false;
     }
 
@@ -45,25 +45,25 @@ export class RepositoryList {
     onDelete(repository:any):void {
         if (confirm('Delete `' + repository.name + '` Repository?')) {
 
-          this.showLoading();
+            this.showLoading();
 
-          this.githubService
-              .deleteRepository(repository)
-              .subscribe(res => {
-                  if(res === true){
-                      let index = this.origRepositories.findIndex(function(o){
-                          return o.id == repository.id
-                      });
+            this.githubService
+                .deleteRepository(repository)
+                .subscribe(res => {
+                    if (res === true) {
+                        let index = this.origRepositories.findIndex(function (o) {
+                            return o.id == repository.id
+                        });
 
-                      if(index !== -1){
-                          this.origRepositories.splice(index, 1);
-                      }
-                  }else{
-                      this.message = res.message;
-                  }
+                        if (index !== -1) {
+                            this.origRepositories.splice(index, 1);
+                        }
+                    } else {
+                        this.message = res.message;
+                    }
 
-                  this.hideLoading();
-            });
+                    this.hideLoading();
+                });
 
         }
     }
@@ -79,13 +79,19 @@ export class RepositoryList {
         var observable = this.githubService.getRepositories();
 
         observable.subscribe(repositories => {
-            if(Array.isArray(repositories)) {
-                if(!repositories.length){
+            if (Array.isArray(repositories)) {
+                if (!repositories.length) {
                     this.message = 'repositories not found!'
                 }
-                this.origRepositories = repositories;
-            }else{
-               this.message = repositories.message;
+
+                // @todo:add model
+                repositories.forEach((repository:any)=> {
+                    repository.created_at = new Date(repository.created_at);
+                    this.origRepositories.push(repository);
+                });
+
+            } else {
+                this.message = repositories.message;
             }
 
             this.hideLoading();

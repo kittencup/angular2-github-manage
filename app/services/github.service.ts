@@ -42,7 +42,7 @@ export class GithubService extends HttpService {
     }
 
     getRepositories():Rx.Observable<any>{
-        var api = 'https://api.github.com/user/repos?type=all&sort=updated';
+        var api = 'https://api.github.com/user/repos?type=all&sort=created';
         return this.get(api);
     }
 

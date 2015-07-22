@@ -43,7 +43,7 @@
                 <i *ng-if="repository.fork" class="glyphicon glyphicon-ok"></i>
                 <i *ng-if="!repository.fork" class="glyphicon glyphicon-remove"></i>
             </td>
-            <td>{{repository.created_at}}</td>
+            <td>{{repository.created_at|date:'medium'}}</td>
             <td>
                 <button class="btn btn-danger" [disabled]="isLoading || !repository.permissions.admin" (click)="onDelete(repository)">Delete</button>
             </td>
