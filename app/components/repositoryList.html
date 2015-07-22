@@ -1,0 +1,10 @@
+<div>
+    <github-form (load)="onLoad($event)"></github-form>
+
+    <github-error *ng-if="message" [message]="message"></github-error>
+
+    <repository-filter (filter)="onFilter($event)" *ng-if="repositories.length || filterValue"></repository-filter>
+
+    <repository-grid (delete)="onDelete($event)" *ng-if="repositories.length || filterValue" [repositories]="repositories"></repository-grid>
+
+</div>

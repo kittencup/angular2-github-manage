@@ -1,0 +1,17 @@
+{
+  "name": "angular-2-github-manage",
+  "version": "0.0.1",
+  "authors": [
+    "kittencup <112367@qq.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
