@@ -33,19 +33,19 @@
         <tr *ng-for="#repository of repositories">
             <td>{{repository.id}}</td>
             <td>{{repository.language}}</td>
-            <td>{{repository.owner.login}}</td>
+            <td>{{repository.owner}}</td>
             <td><a target="_blank" href="{{repository.html_url}}">{{repository.name}}</a></td>
             <td>
-                <i *ng-if="repository.private" class="glyphicon glyphicon-ok"></i>
-                <i *ng-if="!repository.private" class="glyphicon glyphicon-remove"></i>
+                <i *ng-if="repository.isPrivate" class="glyphicon glyphicon-ok"></i>
+                <i *ng-if="!repository.isPrivate" class="glyphicon glyphicon-remove"></i>
             </td>
             <td>
-                <i *ng-if="repository.fork" class="glyphicon glyphicon-ok"></i>
-                <i *ng-if="!repository.fork" class="glyphicon glyphicon-remove"></i>
+                <i *ng-if="repository.isFork" class="glyphicon glyphicon-ok"></i>
+                <i *ng-if="!repository.isFork" class="glyphicon glyphicon-remove"></i>
             </td>
             <td>{{repository.created_at|date:'medium'}}</td>
             <td>
-                <button class="btn btn-danger" [disabled]="isLoading || !repository.permissions.admin" (click)="onDelete(repository)">Delete</button>
+                <button class="btn btn-danger" [disabled]="isLoading || !repository.isAdmin" (click)="onDelete(repository)">Delete</button>
             </td>
         </tr>
         </tbody>

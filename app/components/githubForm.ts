@@ -5,7 +5,7 @@ import {GithubService} from '../services/github.service';
 @Component({
     selector: 'github-form',
     events: ['load'],
-    properties:['isLoading:is-loading'],
+    properties: ['isLoading:is-loading'],
 })
 @View({
     templateUrl: './components/githubForm.html?v=<%= VERSION %>'
@@ -21,15 +21,18 @@ export class GithubForm {
         this.githubService = githubService;
     }
 
-    onInputUsername(value:string) {
+    onInputUsername(value:string):GithubForm {
         this.githubService.setUsername(value);
+        return this;
     }
 
-    onInputPassword(value:string) {
+    onInputPassword(value:string):GithubForm {
         this.githubService.setPassword(value);
+        return this;
     }
 
-    onLoad() {
-        this.load.next(this.githubService);
+    onLoad():GithubForm {
+        this.load.next('...load repository');
+        return this;
     }
 }

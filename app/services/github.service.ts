@@ -13,12 +13,12 @@ export class GithubService extends HttpService {
     }
 
     configGithubHeaders():GithubService {
-        var headers = new Headers();
+        let headers = new Headers();
         headers.set('Accept', 'application/vnd.github.v3+json');
         headers.set('Content-Type', 'application/json;charset=UTF-8');
         this.requestOptions = {
             headers: headers
-        }
+        };
         return this;
     }
 
@@ -41,13 +41,13 @@ export class GithubService extends HttpService {
         return this;
     }
 
-    getRepositories():Rx.Observable<any>{
-        var api = 'https://api.github.com/user/repos?type=all&sort=created';
+    getRepositories():Rx.Observable<any> {
+        let api = 'https://api.github.com/user/repos?type=all&sort=created&nocache=' + (+new Date());
         return this.get(api);
     }
 
-    deleteRepository(repository:any):Rx.Observable<any>{
-        var api = 'https://api.github.com/repos/' + repository.owner.login + '/' + repository.name;
+    deleteRepository(repository:any):Rx.Observable<any> {
+        let api = 'https://api.github.com/repos/' + repository.owner.login + '/' + repository.name + '?&nocache=' + (+new Date());
         return this.delete(api);
     }
 

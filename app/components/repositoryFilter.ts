@@ -1,5 +1,4 @@
 import {Component,View} from 'angular2/annotations';
-import {NgFor,NgIf} from 'angular2/directives';
 import {EventEmitter} from 'angular2/core';
 
 @Component({
@@ -17,7 +16,8 @@ export class RepositoryFilter {
         this.filter = new EventEmitter();
     }
 
-    onFilter(value:string):void {
+    onFilter(value:string):RepositoryFilter {
         this.filter.next(value);
+        return this;
     }
 }

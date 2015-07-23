@@ -1,6 +1,7 @@
 import {Component,View} from 'angular2/annotations';
 import {NgFor,NgIf} from 'angular2/directives';
 import {EventEmitter} from 'angular2/core';
+import {RepositoryModel} from '../models/repository.model'
 
 @Component({
     selector: 'repository-grid',
@@ -19,7 +20,8 @@ export class RepositoryGrid {
     constructor(){
         this.delete = new EventEmitter();
     }
-    onDelete(repository:any):void{
+    onDelete(repository:RepositoryModel):RepositoryGrid{
         this.delete.next(repository);
+        return this;
     }
 }

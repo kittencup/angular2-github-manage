@@ -1,9 +1,8 @@
 import {Component,View} from 'angular2/annotations';
-import {EventEmitter} from 'angular2/core';
 
 @Component({
     selector: 'github-error',
-    properties:['message']
+    properties: ['message']
 })
 @View({
     template: `
