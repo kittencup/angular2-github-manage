@@ -35,7 +35,7 @@ export class GithubService extends HttpService {
     }
 
     deleteRepository(repository:any):Rx.Observable<any> {
-        let api = 'https://api.github.com/repos/' + repository.owner.login + '/' + repository.name + '?&nocache=' + (+new Date());
+        let api = 'https://api.github.com/repos/' + repository.owner + '/' + repository.name + '?&nocache=' + (+new Date());
         return this.delete(api);
     }
 
