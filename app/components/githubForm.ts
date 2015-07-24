@@ -1,38 +1,35 @@
 import {Component,View} from 'angular2/annotations';
 import {EventEmitter} from 'angular2/core';
-import {GithubService} from '../services/github.service';
+import {Validators, formDirectives, ControlGroup} from 'angular2/forms';
+// @todo maybe angular 2 bug
+import {FormBuilder} from 'angular2/angular2';
 
 @Component({
     selector: 'github-form',
     events: ['load'],
     properties: ['isLoading:is-loading'],
+    viewInjector: [FormBuilder]
 })
 @View({
-    templateUrl: './components/githubForm.html?v=<%= VERSION %>'
+    templateUrl: './components/githubForm.html?v=<%= VERSION %>',
+    directives:[formDirectives]
 })
 export class GithubForm {
 
-    githubService:GithubService;
     load:EventEmitter;
     isLoading:boolean;
+    form: ControlGroup;
 
-    constructor(githubService:GithubService) {
+    constructor(formBuilder: FormBuilder) {
         this.load = new EventEmitter();
-        this.githubService = githubService;
+        this.form = formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', Validators.required]
+        });
     }
 
-    onInputUsername(value:string):GithubForm {
-        this.githubService.setUsername(value);
-        return this;
-    }
-
-    onInputPassword(value:string):GithubForm {
-        this.githubService.setPassword(value);
-        return this;
-    }
-
-    onLoad():GithubForm {
-        this.load.next('...load repository');
+    onLoad(value:any):GithubForm {
+        this.load.next(value);
         return this;
     }
 }

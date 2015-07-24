@@ -1,13 +1,13 @@
 <div class="row">
-    <form class="form-inline github-form">
+    <form [ng-form-model]="form" (submit)="onLoad(form.value)" class="form-inline github-form">
         <div class="form-group">
-            <input type="text" class="form-control" #username placeholder="Github Username" (input)="onInputUsername($event.target.value)">
+            <input type="text" class="form-control" ng-control="username" placeholder="Github Username">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" #password placeholder="Github Password" (input)="onInputPassword($event.target.value)">
+            <input type="password" class="form-control" ng-control="password" placeholder="Github Password">
         </div>
         <div class="form-group">
-            <button [disabled]="!username.value || !password.value || isLoading" type="button" class="btn btn-primary" (click)="onLoad()">load repository</button>
+            <button [disabled]="!form.valid || isLoading" type="submit" class="btn btn-primary">load repository</button>
         </div>
     </form>
 </div>

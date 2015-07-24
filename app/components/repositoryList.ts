@@ -78,7 +78,8 @@ export class RepositoryList {
         return this;
     }
 
-    onLoad():RepositoryList {
+    onLoad(value:any):RepositoryList {
+        this.githubService.setAuthorization(value);
         this.origRepositories = [];
         this.message = null;
         this.showLoading();

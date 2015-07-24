@@ -22,23 +22,11 @@ export class GithubService extends HttpService {
         return this;
     }
 
-    setAuthorization() {
+    setAuthorization(value) {
         if (!this.requestOptions) {
             this.configGithubHeaders();
         }
-        this.requestOptions.headers.set('Authorization', 'Basic ' + btoa(this.username + ':' + this.password));
-    }
-
-    setUsername(username:string):GithubService {
-        this.username = username;
-        this.setAuthorization();
-        return this;
-    }
-
-    setPassword(password:string):GithubService {
-        this.password = password;
-        this.setAuthorization();
-        return this;
+        this.requestOptions.headers.set('Authorization', 'Basic ' + btoa(value.username + ':' + value.password));
     }
 
     getRepositories():Rx.Observable<any> {
