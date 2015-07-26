@@ -2,6 +2,7 @@ import {Component,View} from 'angular2/annotations';
 import {EventEmitter} from 'angular2/core';
 import {Validators, formDirectives, ControlGroup} from 'angular2/forms';
 // @todo maybe angular 2 bug
+//import {FormBuilder} from 'angular2/forms';
 import {FormBuilder} from 'angular2/angular2';
 
 @Component({
