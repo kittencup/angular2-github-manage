@@ -4,9 +4,6 @@ import {Inject} from 'angular2/di';
 
 export class GithubService extends HttpService {
 
-    private username:string;
-    private password:string;
-
     constructor(@Inject(Http) http:Http) {
         super(http);
         this.configGithubHeaders();
