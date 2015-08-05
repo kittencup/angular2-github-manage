@@ -1,5 +1,5 @@
 /// <reference path="../typings/tsd.d.ts" />
-import {bootstrap} from 'angular2/core';
+import {bootstrap} from 'angular2/angular2';
 import {Component, View} from 'angular2/annotations';
 import {httpInjectables} from 'angular2/http';
 import {RepositoryList} from './components/RepositoryList';
